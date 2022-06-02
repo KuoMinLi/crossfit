@@ -28,16 +28,21 @@
               </div>
               <img class="img-fluid" alt="">
               <!-- 延伸技巧，多圖 -->
-              <div class="mt-5">
-                <div class="mb-3 input-group" >
+              <div class="mt-5" v-if="tempProduct.images">
+                <div v-for="(image, key) in tempProduct.images" class="mb-3 input-group" :key="key">
                   <input type="url" class="form-control form-control"
-                          placeholder="請輸入連結">
-                  <button type="button" class="btn btn-outline-danger">
+                         v-model="tempProduct.images[key]" placeholder="請輸入連結">
+                  <button type="button" class="btn btn-outline-danger"
+                  @click="tempProduct.images.splice(key, 1)">
                     移除
                   </button>
                 </div>
-                <div>
-                  <button class="btn btn-outline-primary btn-sm d-block w-100">
+                <div
+                 v-if="
+                    tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length
+                  ">
+                  <button class="btn btn-outline-primary btn-sm d-block w-100"
+                  @click="tempProduct.images.push('')">
                     新增圖片
                   </button>
                 </div>
@@ -123,7 +128,7 @@
 </template>
 
 <script>
-import Modal from 'bootstrap/js/dist/modal';
+import modalMixin from '@/mixins/modalMixin';
 
 export default {
   props: {
@@ -135,6 +140,9 @@ export default {
   watch: {
     product() {
       this.tempProduct = this.product;
+      if (!this.tempProduct.images) {
+        this.tempProduct.images = [];
+      }
     },
   },
   data() {
@@ -144,12 +152,6 @@ export default {
     };
   },
   methods: {
-    showModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
     uploadFile() {
       const uploadedFile = this.$refs.fileInput.files[0];
       const formData = new FormData();
@@ -163,8 +165,6 @@ export default {
       });
     },
   },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal);
-  },
+  mixins: [modalMixin],
 };
 </script>
