@@ -1,5 +1,9 @@
 <template>
-  <LoadingView :active="isLoading"></LoadingView>
+  <LoadingView :active="isLoading">
+    <div class="loadingio-spinner-cube-50evvftsk7p"><div class="ldio-a1obro97w5l">
+      <div></div><div></div><div></div><div></div>
+    </div></div>
+  </LoadingView>
   <div class="text-end">
     <button class="btn btn-primary" type="button" @click="openModal(ture)">
       增加一個產品
@@ -41,6 +45,7 @@
       </tr>
     </tbody>
   </table>
+  <PaginationView :pages="pagination" @emit-pages="getProducts"></PaginationView>
   <ProductModal ref="productModal"
   :product="tempProduct"
   @update-product="updateProduct"></ProductModal>
@@ -50,6 +55,7 @@
 
 <script>
 import ProductModal from '@/components/ProductModal.vue';
+import PaginationView from '@/components/PaginationView.vue';
 import DelModal from '@/components/DeleteModal.vue';
 
 export default {
@@ -65,11 +71,12 @@ export default {
   components: {
     ProductModal,
     DelModal,
+    PaginationView,
   },
   inject: ['emitter'],
   methods: {
-    getProducts() {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
+    getProducts(page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`;
       this.isLoading = true;
       this.$http.get(api)
         .then((res) => {

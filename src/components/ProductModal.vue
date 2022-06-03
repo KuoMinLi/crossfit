@@ -50,7 +50,7 @@
             </div>
             <div class="col-sm-8">
               <div class="mb-3">
-                <label for="title" class="form-label">標題
+                <label for="title" class="form-label">標題 (必填)
                 <input type="text" class="form-control" id="title"
                 v-model="tempProduct.title"  placeholder="請輸入標題">
                 </label>
@@ -58,13 +58,13 @@
 
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
-                  <label for="category" class="form-label">分類
+                  <label for="category" class="form-label">分類 (必填)
                   <input type="text" class="form-control" id="category"
                   v-model="tempProduct.category"  placeholder="請輸入分類">
                   </label>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">單位
+                  <label for="price" class="form-label">單位 (必填)
                   <input type="text" class="form-control" id="unit"
                   v-model="tempProduct.unit" placeholder="請輸入單位">
                   </label>
@@ -73,13 +73,13 @@
 
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
-                  <label for="origin_price" class="form-label">原價
+                  <label for="origin_price" class="form-label">原價 (必填)
                   <input type="number" class="form-control" id="origin_price"
                   v-model="tempProduct.origin_price" placeholder="請輸入原價">
                   </label>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">售價
+                  <label for="price" class="form-label">售價 (必填)
                   <input type="number" class="form-control" id="price"
                   v-model="tempProduct.price" placeholder="請輸入售價">
                   </label>
