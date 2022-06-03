@@ -27,12 +27,17 @@ const routes = [
         path: 'products',
         component: () => import('../views/ProductsView.vue'),
       },
+      {
+        path: 'orders',
+        component: () => import('../views/OrdersView.vue'),
+      },
     ],
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
+  linkActiveClass: 'active',
   routes,
 });
 

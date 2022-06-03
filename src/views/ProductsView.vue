@@ -4,8 +4,8 @@
       <div></div><div></div><div></div><div></div>
     </div></div>
   </LoadingView>
-  <div class="text-end">
-    <button class="btn btn-primary" type="button" @click="openModal(ture)">
+  <div class="text-end mt-4">
+    <button class="btn btn-dark" type="button" @click="openModal(ture)">
       增加一個產品
     </button>
   </div>
