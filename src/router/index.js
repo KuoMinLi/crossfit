@@ -33,6 +33,20 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/user',
+    component: () => import('../views/UserView.vue'),
+    children: [
+      {
+        path: 'cart',
+        component: () => import('../views/UserCart.vue'),
+      },
+      {
+        path: 'product/:productId',
+        component: () => import('../views/UserProduct.vue'),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
